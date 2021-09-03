@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Tin tức</h2>
+                        <div class="bt-option">
+                            <a href="{% url 'home:index' %}">Trang chủ</a>
+                            <span>Tin tức</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+<!-- Blog Details Section Begin -->
+<section class="blog-details-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 p-0 m-auto">
+                <div class="blog-details-text">
+                    {% if tin_tuc != None %}
+                    <div class="blog-details-title">
+                        <p><b><h1 style="color: aliceblue;"> {{ tin_tuc.tieu_de }} </h1></b></p>
+                    </div>
+                    <div class="blog-details-title">
+                        <p>{{ tin_tuc.noi_dung }} </p>
+                    </div>
+                    {% endif %}
+
+                    
+                    <div class="blog-details-tag-share">
+                        <div class="tags">
+                          <a href="#">Body buiding</a>
+                          <a href="#">Yoga</a>
+                          <a href="#">Weightloss</a>
+                          <a href="#">Streching</a>
+                        </div>
+                        <div class="share">
+                          <span>Share</span>
+                          <a href="#"><i class="fa fa-facebook"></i> 82</a>
+                          <a href="#"><i class="fa fa-twitter"></i> 24</a>
+                          <a href="#"><i class="fa fa-envelope"></i> 08</a>
+                        </div>
+                      </div>
+                      <div class="blog-details-author">
+                        <div class="ba-pic">
+                          <img src="{% static 'home/img/blog/details/blog-profile.jpg' %}" alt="" />
+                        </div>
+                        <div class="ba-text">
+                          <h5>Lena Mollein.</h5>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, quyến rũ tính khí và sức sống, để lao động và buồn phiền, một số điều quan trọng cần làm eiusmod. Trong những năm qua, ai không tập thể dục.
+                          </p>
+                          <div class="bp-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="comment-option">
+                            <h5 class="co-title">Comment</h5>
+                            <div class="co-item">
+                              <div class="co-widget">
+                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                              </div>
+                              <div class="co-pic">
+                                <img src="{% static 'home/img/blog/details/comment-1.jpg' %}" alt="" />
+                                <h5>Brandon Kelley</h5>
+                              </div>
+                              <div class="co-text">
+                                <p>
+                                  Cũng không có bất kỳ người nào thuộc về; và, những người sẽ bình tĩnh Lorem ipsum dolor ngồi amet, consectetur, anh ta mong muốn đạt được, nỗi đau.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="co-item reply-comment">
+                              <div class="co-widget">
+                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                              </div>
+                              <div class="co-pic">
+                                <img src="{% static 'home/img/blog/details/comment-2.jpg' %}" alt="" />
+                                <h5>Brandon Kelley</h5>
+                              </div>
+                              <div class="co-text">
+                                <p>
+                                  Cũng không có bất kỳ người nào thuộc về; và, những người sẽ bình tĩnh Lorem ipsum dolor ngồi amet, consectetur, anh ta mong muốn đạt được, nỗi đau.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="co-item">
+                              <div class="co-widget">
+                                <a href="#"><i class="fa fa-heart-o"></i></a>
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                              </div>
+                              <div class="co-pic">
+                                <img src="{% static 'home/img/blog/details/comment-3.jpg' %}" alt="" />
+                                <h5>Brandon Kelley</h5>
+                              </div>
+                              <div class="co-text">
+                                <p>
+                                  Cũng không có bất kỳ người nào thuộc về; và, những người sẽ bình tĩnh Lorem ipsum dolor ngồi amet, consectetur, anh ta mong muốn đạt được, nỗi đau.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div style="margin-bottom: 30px;">
+                              <h3 style="color: #f36100; font-weight: bold; text-align: center;">GỬI LỜI NHẮN</h3>
+                          </div>
+                          <div class="leave-comment">
+                              <form action="" method="POST">
+                                  {% csrf_token %}
+                                  <input type="text" name="tenkh" placeholder="Tên">
+                                  <input type="text" name="email" placeholder="Email">
+                                  <input type="number" name="sdt" placeholder="Số điện thoại">
+                                  <textarea name="gopy" placeholder="Góp Ý"></textarea>
+                                 
+                                  <button type="submit">GỬI ĐI</button>
+                              </form>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Details Section End -->
+<!-- Blog Section End -->
+{% endblock %}

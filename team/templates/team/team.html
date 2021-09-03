@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2 style="font-family: animation-delay;">Thành viên chúng tôi</h2>
+                        <div class="bt-option">
+                            <a href="{% url 'home:index' %}">Trang chủ</a>
+                            <span>Our team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+ <!-- Team Section Begin -->
+    <section class="team-section team-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="team-title">
+                        <div class="section-title">
+                            <span>Thành viên chúng tôi </span>
+                            <h2>ĐÀO TẠO VỚI CÁC CHUYÊN GIA</h2>
+                        </div>
+                        <a href="{% url 'contact:contact_view' %}" class="primary-btn btn-normal appoinment-btn">Cuộc hẹn</a>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="row">
+             {%for getdata in NhanVienPT %}
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ts-item set-bg" data-setbg="{{getdata.hinh.url}}">
+                        <div class="ts_text">
+                            <h4>{{getdata.ten}}</h4>
+                            <span>{{getdata.sdt}}</span>
+                        </div>
+                    </div>
+                </div>
+                  {%endfor%}
+                  <div class="col-sm-12">
+                    {% if nvpt.has_other_pages %}
+                        <ul class="pagination justify-content-center">
+                            {% if nvpt.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ nvpt.previous_page_number }}" style="color: #f36100;">&laquo;</a></li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link" style="color: #f36100;">&laquo;</span></li>
+                            {% endif %}
+    
+                            {% for i in nvpt.paginator.page_range %}
+                                {% if nvpt.number == i %}
+                                    <li class="page-item active"><span class="page-link" style="background-color: #f36100; border: antiquewhite;">{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ i }}" style="color: #f36100;">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+    
+                            {% if nvpt.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ nvpt.nex_page_number }}" style="color: #f36100;">&raquo;</a></li>
+                            {% else %}
+                                <li class="page-item disabled"><span class="page-link" style="color: #f36100;">&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+            </div>
+            
+        </div>
+    </section>
+    <!-- Team Section End -->
+{% endblock %}

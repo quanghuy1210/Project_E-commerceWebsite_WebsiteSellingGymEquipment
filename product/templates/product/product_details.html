@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load cart %}
+
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Chi tiết sản phẩm</h2>
+                        <div class="bt-option">
+                            <a href="{% url 'home:index' %}">Trang chủ</a>
+                            <a href="{% url 'product:product_view' %}">Sản phẩm</a>
+                            <span>Chi tiết</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Class Details Section Begin -->
+    <section class="class-details-section spad">
+        <div class="container"> 
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="class-details-text">
+                        <div class="cd-trainer">
+                            <div class="row">
+                                {% if product != None %}
+                                    <div class="col-md-6">
+                                        <div class="cd-trainer-pic">
+                                            <img src="{{ product.hinh.url }}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="cd-trainer-text">
+                                            <div class="trainer-title">
+                                                <h4 style="color: #f36100;">{{ product.tensp }}</h4>
+                                                <span style="font-weight: bold; color: white;">Loại sản phẩm :</span><span> {{ product.ma_loai_san_pham}}</span>
+                                            </div>
+                                            <p style="text-align: justify;">{{ product.chi_tiet_sp }}</p>
+                                            <ul class="trainer-info">
+                                                <li><span>Mã sản phẩm</span>{{ product.masp }}</li>
+                                                <li><span>Xuất xứ</span>{{ product.xuat_xu }}</li>
+                                                <li><span>Nhà sản xuất</span>{{ product.ma_nha_san_xuat }}</li>
+                                                <li><span>Năm sản xuất</span>{{ product.nam_san_xuat | date:"Y" }}</li>
+                                                {% if km.count != 0 %}
+                                                    <li><span>Giá Cũ</span>
+                                                            <n style="text-decoration: line-through;">{{ product.gia  | intcomma }}</n>
+                                                            <span style="color: #f36100; font-weight: bold;">{{ product.dvt }}</span>
+                                                    </li>
+                                                    <li><span>Giá mới</span>
+                                                            {{ product.discount | intcomma }}
+                                                        <span style="color: #f36100; font-weight: bold;">{{ product.dvt }} {% for value in km %}
+                                                            {% if product.ma_loai_san_pham ==  value.ma_loai_san_pham %}
+                                                        ( -{{ value.phantram_giam }} %)
+                                                            {% endif %}
+                                                        {% endfor %}</span>
+                                                        
+                                                    </li>
+                                                {% else %}
+                                                    <li><span>Giá</span>
+                                                    {% if product.discount == 0 or  product.discount == NULL %}
+                                                        {{ product.gia  | intcomma }}
+                                                        
+                                                    {% else %}
+                                                        {{ product.discount  | intcomma }}
+                                                    {% endif %}
+
+                                                    <span style="color: #f36100; font-weight: bold;">{{ product.dvt }}</span>
+                                                    
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                        {% if product.ma_loai_san_pham == 6 %}
+                                            <p>
+                                                <h2 style="color: #f36100;">Liên hệ: 0903876543 để được tư vấn.</h2>
+                                            </p>
+                                        {% elif  product.ma_loai_san_pham == 7  %}
+                                            <p>
+                                                <h2 style="color: #f36100;">Liên hệ: 0903876543 để được tư vấn.</h2>
+                                            </p>
+                                        {% elif  product.ma_loai_san_pham == 8  %}
+                                            <p>
+                                                <h2 style="color: #f36100;">Liên hệ: 0903876543 để được tư vấn.</h2>
+                                            </p>
+                                        {% else %}
+                                            <!-- <p>
+                                                <strong style="color: white;">Số lượng: </strong>
+                                                <input type="number" value="1" min="1" max="5">
+                                            </p> -->
+                                            <div class="row no-gutters">
+                                                {% if product|is_in_cart:request.session.cart %}
+                                                    <div class="row" >
+                                                        <form action="" class="col-3" method="POST">
+                                                            {% csrf_token %}
+                                                            <input hidden type="text" name="product" value="{{ product.masp }}">
+                                                            <input hidden type="text" name="remove" value="True">
+                                                            <input type="submit" value=" - " style="border-radius: 0px; height: 45px;" class="btn btn-block btn-light">
+                                                        </form>
+                                                        <div class="text-center col" style="color: white;">{{product|cart_quantity:request.session.cart}} trong giỏ hàng</div>
+                                                        <form action="" class="col-3" method="POST">
+                                                            {% csrf_token %}
+                                                            <input hidden type="text" name="product" value="{{ product.masp }}">
+                                                            <input type="submit" value=" + " style="border-radius: 0px; height: 45px;" class="btn btn-block btn-light">
+                                                        </form>
+                                                    </div>
+                                                {% else %}
+                                                    <form action="" method="POST" class="btn-block">
+                                                        {% csrf_token %}
+                                                        <input hidden type="text" name="product" value="{{ product.masp }}">
+                                                        <input type="submit" class="primary-btn btn-normal appoinment-btn" style="float: left;" value="Đặt hàng"/>
+                                                    </form>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <br><hr style="background-color: white;">
+                            <div class="row">
+                                <div style="margin-left: 2vh;">
+                                    <h3 class="title" style="color:  #f36100;">Góp ý</h3><br>
+                                    <table>
+                                        <tr>
+                                            <td><label style="color: white;" for="name">Username</label></td>
+                                            <td><input name="name" type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label style="color: white;" for="email">Email</label></td>
+                                            <td><input name="email" type="email"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label style="color: white;" for="review">Nội dung</label></td>
+                                            <td><textarea name="review" id="" rows="10" style="width: 40vw;"></textarea></td>
+                                        </tr>
+                                    </table>
+                                    <a href="#" class="primary-btn btn-normal appoinment-btn" style="float: left;">Đăng bài</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-9">
+                    <div class="sidebar-option">
+                        <div class="so-categories">
+                            <h5 class="title">Danh mục sản phẩm</h5>
+                            <ul>
+                                {% for item in categories %}
+                                    <li><a href="{% url 'product:product_type' item.ma_loai_san_pham %}">{{ item.tenloai }} <span>{{ item.ma_loai_san_pham.Count }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="so-latest">
+                            <h5 class="title">Sản phẩm khuyến mãi</h5>
+                            <div class="latest-large set-bg" data-setbg="{% static 'home/img/sidebar-banner.jpg' %}">
+                                <div class="ll-text">
+                                    <h5><a href="#">More</a></h5>
+                                </div>
+                            </div>
+                            <div class="latest-item">
+                                <div class="li-pic">
+                                    <img src="{% static 'home/img/letest-blog/latest-1.jpg' %}" alt="" width="50vw" height="50vh">
+                                </div>
+                                <div class="li-text">
+                                    <h6><a href="#">Trọn gói boxing</a></h6>
+                                    <span class="li-time">Aug 15, 2019</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Section Begin -->
+            <section class="team-section spad">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="team-title">
+                                <div class="section-title">
+                                    <h2 style="color: #f36100;">Sản phẩm liên quan</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ts-slider owl-carousel">
+                            {% for item in type %}
+                                {% if item.ma_loai_san_pham == product.ma_loai_san_pham %}
+                                    <div class="col-lg-4">
+                                        <div class="ts-item set-bg" data-setbg="{{ item.hinh.url }}">
+                                            <div class="ts_text">
+                                                <h4>{{ item.tensp }}</h4>
+                                                <h5 style="color: aliceblue;">{{ item.gia | intcomma }}</h5><h6 style="color: #f36100;">{{ item.dvt }}</h6>
+                                                <a href="{% url 'product:product_detail' item.masp %}" class="primary-btn">xem chi tiết</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Team Section End -->
+        </div>
+    </section>
+    <!-- Class Details Section End -->
+{% endblock %}

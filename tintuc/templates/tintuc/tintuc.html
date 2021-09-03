@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Tin tức</h2>
+                        <div class="bt-option">
+                            <a href="{% url 'home:index' %}">Trang chủ</a>
+                            <span>Tin tức</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+<!-- Blog Section Begin -->
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="team-title">
+                    <div class="section-title">
+                        <span style="font-size: 30px">tin tuc</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           {% block km %}
+               
+           {% endblock %}
+        </div>
+        <div class="row">
+            <div class="col-lg-8 p-0">
+                {%for getdata in tin_tuc %}
+                <div class="blog-item">
+                    <div class="bi-pic">
+                        <img src="{% static 'home/img/logo.png' %}" alt="">
+                    </div>
+                    <div class="bi-text">
+                        <h5><a href="{% url 'tintuc:loai_tin_view' getdata.matin%}"> <b> <p>{{getdata.tieu_de}}</p></b></a></h5>
+                        <ul>
+                            <li>{{getdata.ngaydang}}</li>
+                            
+                        </ul>
+                       
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+            <div class="col-lg-4 col-md-8 p-0">
+                <div class="sidebar-option">
+                    <div class="so-categories">
+                        <h5 class="title">THỂ LOẠI</h5>
+                        <ul>
+                            <li><a href="#">Yoga <span>12</span></a></li>
+                            <li><a href="#">Chạy <span>32</span></a></li>
+                            <li><a href="#">Giảm cân <span>86</span></a></li>
+                            <li><a href="#">Cario <span>25</span></a></li>
+                            <li><a href="#">Cơ thể <span>36</span></a></li>
+                            <li><a href="#">Dinh dưỡng<span>15</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="so-latest">
+                        <h5 class="title">BÀI ĐĂNG NỔI BẬT</h5>
+                        <div class="latest-large set-bg" data-setbg="img/letest-blog/latest-1.jpg">
+                            <div class="ll-text">
+                                <h5><a href="https://baoquocte.vn/tau-ca-trung-quoc-tap-ket-tai-da-ba-dau-o-bien-dong-thay-gi-tu-phan-ung-cua-my-144091.html">Tàu cá Trung Quốc tập kết tại Đá Ba Đầu ở Biển Đông: Thấy gì từ phản ứng của Mỹ?</a></h5>
+                                <ul>
+                                    <li>Aug 20, 2019</li>
+                                    <li>20 Comment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="latest-item">
+                            <div class="li-pic">
+                                <img src="img/letest-blog/latest-2.jpg" alt="">
+                            </div>
+                            <div class="li-text">
+                                <h6><a href="https://suckhoedoisong.vn/ket-qua-giai-trinh-tu-gen-n191413.html">Các ca mắc mới COVID-19 nhiễm biến chủng của Ấn Độ và Anh</a></h6>
+                                <span class="li-time">Aug 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="latest-item">
+                            <div class="li-pic">
+                                <img src="img/letest-blog/latest-3.jpg" alt="">
+                            </div>
+                            <div class="li-text">
+                                <h6><a href="https://tienphong.vn/nu-nhan-vien-massage-nghi-nhiem-covid-19-o-da-nang-da-tiep-xuc-nhung-ai-post1333433.tpo">Nữ nhân viên massage nghi nhiễm COVID-19 ở Đà Nẵng đã tiếp xúc những ai?</a></h6>
+                                <span class="li-time">Aug 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="latest-item">
+                            <div class="li-pic">
+                                <img src="img/letest-blog/latest-4.jpg" alt="">
+                            </div>
+                            <div class="li-text">
+                                <h6><a href="http://baochinhphu.vn/chi-dao-quyet-dinh-cua-chinh-phu-thu-tuong-chinh-phu/phai-co-nhung-dot-pha-moi-de-khcn-tro-thanh-suc-manh-dong-luc-thuc-su/430047.vgp">Phải có những đột phá mới để KH&CN trở thành sức mạnh, động lực thực sự</a></h6>
+                                <span class="li-time">Aug 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="latest-item">
+                            <div class="li-pic">
+                                <img src="img/letest-blog/latest-5.jpg" alt="">
+                            </div>
+                            <div class="li-text">
+                                <h6><a href="https://baoquocte.vn/bo-truong-quoc-phong-my-austin-se-co-chuyen-tham-dau-tien-toi-dong-nam-a-144135.html">Bộ trưởng Quốc phòng Mỹ Austin sẽ có chuyến thăm đầu tiên tới Đông Nam Á</a></h6>
+                                <span class="li-time">Aug 15, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="so-tags">
+                        <h5 class="title">Các thẻ phổ biến</h5>
+                        <a href="#">Tập thể dục</a>
+                        <a href="#">Xây dựng cơ thể</a>
+                        <a href="#">Yoga</a>
+                        <a href="#">Giảm cân</a>
+                        <a href="#">Proffeponal</a>
+                        <a href="#">Streching</a>
+                        <a href="#">Cardio</a>
+                        <a href="#">Boxing</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                {% if tin_tuc.has_other_pages %}
+                    <ul class="pagination justify-content-center">
+                        {% if tin_tuc.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ tin_tuc.previous_page_number }}" style="color: #f36100;">&laquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link" style="color: #f36100;">&laquo;</span></li>
+                        {% endif %}
+
+                        {% for i in tin_tuc.paginator.page_range %}
+                            {% if tin_tuc.number == i %}
+                                <li class="page-item active"><span class="page-link" style="background-color: #f36100; border: antiquewhite;">{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}" style="color: #f36100;">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if tin_tuc.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ tin_tuc.nex_page_number }}" style="color: #f36100;">&raquo;</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link" style="color: #f36100;">&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div> 
+</section>
+<!-- Blog Section End -->
+{% endblock %}

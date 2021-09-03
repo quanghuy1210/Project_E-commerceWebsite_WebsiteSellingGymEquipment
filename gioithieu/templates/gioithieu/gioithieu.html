@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb-text">
+                    <h2 style="font-family: animation-delay;">Giới thiệu</h2>
+                    <div class="bt-option">
+                        <a href="{% url 'home:index' %}">Trang chủ </a>
+                        <span >Giới thiệu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<section class="choseus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>TẠI SAO LẠI CHỌN CHÚNG TÔI?</span>
+                    <h2>ĐẨY LÊN GIỚI HẠN CỦA BẠN</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-034-stationary-bike"></span>
+                    <h4>Thiết bị hiện đại</h4>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-033-juice"></span>
+                    <h4>Kế hoạch dinh dưỡng lành mạnh</h4>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-002-dumbell"></span>
+                    <h4>Kế hoạch đào tạo cá nhân</h4>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="cs-item">
+                    <span class="flaticon-014-heart-beat"></span>
+                    <h4>Duy nhất cho nhu cầu của bạn</h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About US Section Begin -->
+<section class="aboutus-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="about-video set-bg" data-setbg="img/about-us.jpg">
+                    <iframe width="846" height="642" src="https://www.youtube.com/embed/N6rS6lYZwTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <i class="fa fa-caret-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 p-0">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>VỀ CHÚNG TÔI</span>
+                        <h2>NHỮNG GÌ CHÚNG TÔI ĐÃ LÀM</h2>
+                    </div>
+                    <div class="at-desc">
+                        <p>Phòng ốc là nền tảng, máy tập là nội dung, phòng gym chất lượng không chỉ cần quy mô rộng
+                            lớn, thiết kế đẹp
+                            mà còn cần đầu tư thiết bị tập chất lượng.
+                            Tự tin rằng chưa có một hệ thống phòng tập nào ở Việt Nam được đầu tư “ngông” như ở Gym
+                            Panda,
+                            hơn 60 máy tập hiện đại bậc nhất, chất lượng theo tiêu chuẩn của Mỹ.</p>
+                    </div>
+                    <div class="about-bar">
+                        <div class="ab-item">
+                            <p>Xây dựng cơ thể</p>
+                            <div id="bar1" class="barfiller">
+                                <span class="fill" data-percentage="80"></span>
+                                <div class="tipWrap">
+                                    <span class="tip"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ab-item">
+                            <p>Đào tạo</p>
+                            <div id="bar2" class="barfiller">
+                                <span class="fill" data-percentage="85"></span>
+                                <div class="tipWrap">
+                                    <span class="tip"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ab-item">
+                            <p>Sự khỏe khoắn</p>
+                            <div id="bar3" class="barfiller">
+                                <span class="fill" data-percentage="90"></span>
+                                <div class="tipWrap">
+                                    <span class="tip"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About US Section End -->
+<!-- Team Section Begin -->
+<section class="team-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="team-title">
+                    <div class="section-title">
+                        <span>Chế độ dinh dưỡng</span>
+                        <h2>Với chuyên gia</h2>
+                    </div>
+                    <a href="{% url 'contact:contact_view' %}" class="primary-btn btn-normal appoinment-btn">Cuộc hẹn</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ts-slider owl-carousel">
+                <div class="col-lg-4">
+                    <div class="ts-item set-bg" data-setbg="{% static 'home/img/hinh_tin_tuc/tin_gym/tin5a.jpg' %}">
+                        <div class="ts_text">
+                            <h4>Chạy bộ</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ts-item set-bg" data-setbg="{% static 'home/img/hinh_tin_tuc/tin_gym/tin5b.jpg' %}">
+                        <div class="ts_text">
+                            <h4>Tập luyện cường độ cao</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ts-item set-bg" data-setbg="{% static 'home/img/hinh_tin_tuc/tin_gym/tin5c.jpg' %}">
+                        <div class="ts_text">
+                            <h4>Đạp xe</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ts-item set-bg" data-setbg="{% static 'home/img/hinh_tin_tuc/tin_gym/tin4c.jpg' %}">
+                        <div class="ts_text">
+                            <h4>Chế độ dinh dưỡng</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Team Section End -->
+<!---->
+<div class="container section-title-container">
+    <h1 class="section-title section-title-center"><b></b><span class="section-title-main">TRIẾT LÝ GYM PANDA</span><b></b></h1>
+</div>
+<section class="section" id="section_544288744">
+    <div class="bg section-bg fill bg-fill bg-loaded"style="background-image:{% static 'home/img/logo.png' %};" >
+        <div class="section-bg-overlay absolute fill"></div>
+    </div>
+    <div class="section-content relative">  
+        <div class="row row-collapse row-divided" style="max-width:" id="row-1667088660">
+            <div class="col small-12 large-12">
+                <div class="col-inner">
+                    <blockquote>
+                        <p><span id="mtc-2217206079628" style="font-family: arial, helvetica, sans-serif;">
+                            <span class="text">
+                                <span style="color: #131212;">Bằng tất cả tham vọng và năng lực của
+                                        mình PanDa tuân thủ triết lý của người sáng lập <strong>Trình Mỹ Duyên</strong>
+                                        –</span> 
+                                        <span style="color: #fa1b13;"><strong>Gym phục vụ cuộc sống – Khoẻ đẹp
+                                            – Thành công – Đẳng cấp.</strong>
+                                        </span>
+                                        <span style="color: #131212;">Bất
+                                        chấp nghề nghiệp, tuổi tác và địa vị xã hội, đến với GYM PANDA quý khách hàng sẽ
+                                        thay đổi bản thân ở 3 điểm quan trọng sau đây: <strong>body, nhận thức về sức
+                                            khoẻ lẫn cuộc sống, thành công hơn trong sự nghiệp và<span
+                                                style="color: #131212;">&nbsp;đời sống gia đình.
+                                        </span></strong> Triết
+                                        lý gym của chúng tôi luôn đầy tính thực tiễn, vẻ đẹp ngoại hình chúng tôi mang
+                                        lại là vĩnh hằng, không dễ thay đổi theo thời gian.
+                                        <span style="color: #fa1b13;"><strong> LeanBody</strong> –
+                                        </span>
+                                        <span style="color: #131212;"><strong>
+                                            <span style="color: #fa1b13;"> nét đẹp bất
+                                                    tử theo thời gian, trường tồn theo năm tháng
+                                            </span>. </strong>
+                                        <span style="color: #131212;">Bạn sử dụng dịch vụ và hàng hoá của chúng tôi
+                                                thì bạn phải trả tiền, còn kiến thức chúng tôi cung cấp cho bạn là miễn
+                                                phí. Bất cứ khi nào, bất cứ nơi đâu chúng tôi luôn chào đón các bạn gia
+                                                nhập vào GYM PANDA cả online lẫn offline – CEO Duyên Trình.
+                                        </span>
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>
+                        </p>
+                    </blockquote>
+                </div>
+            </div>
+            <style scope="scope">
+            </style>
+        </div>
+    </div>
+
+
+    <style scope="scope">
+        #section_544288744 {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        #section_544288744 .section-bg-overlay {
+            background-color: rgba(70, 63, 61, 0.61);
+        }
+
+    
+
+        #section_544288744 .section-bg {
+            background-position: 61% 25%;
+        }
+
+
+        @media (min-width:550px) {
+
+            #section_544288744 .section-bg-overlay {
+                background-color: rgba(39, 31, 29, 0.65);
+            }
+
+        }
+    </style>
+</section>
+{% endblock %}

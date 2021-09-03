@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Đăng nhập tài khoản</h2>
+                        <div class="bt-option">
+                            <a href="{% url 'home:index' %}">Trang chủ</a>
+                            <span>Đăng nhập</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="color: #f36100; font-weight: bold; text-align: center;">Đăng nhập</h3>
+                    </div>
+                    <div class="leave-comment">
+                        <form action="login" method="POST">
+                            {% csrf_token %}
+                            {% if error %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ error }}
+                                </div>
+                            {% endif %}
+                            <input type="email" name="email" placeholder="Email" autocomplete="off">                            
+                            <input type="password" name="password" placeholder="Password">
+                            <button type="submit">Đăng nhập</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section End -->
+{% endblock %}

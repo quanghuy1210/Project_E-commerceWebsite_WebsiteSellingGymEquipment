@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load cart %}
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'home/img/breadcrumb-bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Giỏ hàng</h2>
+                        <div class="bt-option">
+                            <a href="{% url 'home:index' %}">Trang chủ</a>
+                            <span>Giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Cart Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="border rounded p-5 m-6">
+                <p class="display-4">GIỎ HÀNG CỦA BẠN</p>
+                <hr> 
+                <table class="table" style="color: white;">
+                    <thead  style="color: #f36100;">
+                        <tr>
+                            <th>STT</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><img style="height: 80px;" src="{{ product.hinh.url }}" alt=""></td>
+                                <td>{{ product.tensp }}</td>
+                                <td>
+                                {% if product.discount == 0 or product.discount == null  %}
+                                    {{ product.gia | intcomma }}
+                                {% else %}
+                                    {{ product.discount | intcomma }}
+                                {% endif %}
+                                </td>
+                                <td>{{ product|cart_quantity:request.session.cart }}</td>
+                                <td>{{ product|price_total:request.session.cart|intcomma }} <span style="color: #f36100;">VND</span></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot style="font-size: 16px;">
+                        <tr>
+                            <th colspan="4"></th>
+                            <th style="color: #f36100;">Tổng thành tiền</th>
+                            <th>{{ products|total_cart_price:request.session.cart|intcomma }} <span style="color: #f36100;">VND</span></th>
+                        </tr>
+                    </tfoot>
+                </table>
+                <hr>
+                <div class="m-3 p-3">
+                    <a href="#" class="primary-btn btn-normal appoinment-btn" data-toggle="modal" data-target="#exampleModal">Xác nhận đơn hàng</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">NHẬP THÔNG TIN XÁC NHẬN ĐƠN HÀNG</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="m-2 p-3">
+                            <form action="{% url 'order:checkout' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="">Địa chỉ</label>
+                                    <input type="text" name="diachi" class="form-control" aria-describedby="helpId" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Số điện thoại</label>
+                                    <input type="text" name="sdt" class="form-control" aria-describedby="helpId" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Gmail</label>
+                                    <input type="text" name="gmail" class="form-control" aria-describedby="helpId" required>
+                                </div>
+                                <input type="submit" class="btn btn-outline-dark col-lg-6" value="Xác nhận">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cart Section End -->
+{% endblock %}
